@@ -1,0 +1,141 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* App Container */
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  height: 90vh;
+  background: #ffffff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Header */
+.chat-header {
+  background: linear-gradient(135deg, #2b7cff, #4fa3ff);
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header .logo {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.chat-header .status {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Chat Body */
+.chat-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f9fbff;
+}
+
+/* Messages */
+.message {
+  margin-bottom: 14px;
+  display: flex;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.assistant {
+  justify-content: flex-start;
+}
+
+/* Chat Bubbles */
+.bubble {
+  max-width: 80%;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  border-radius: 14px;
+}
+
+/* User Bubble */
+.message.user .bubble {
+  background: #2b7cff;
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+/* Assistant Bubble */
+.message.assistant .bubble {
+  background: #e9eef7;
+  color: #1f2937;
+  border-bottom-left-radius: 4px;
+}
+
+/* Input Area */
+.chat-input {
+  display: flex;
+  padding: 14px;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.chat-input input:focus {
+  border-color: #2b7cff;
+}
+
+.chat-input button {
+  margin-left: 10px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: none;
+  background: #2b7cff;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.chat-input button:hover {
+  background: #1f66e0;
+}
+
+/* Scrollbar */
+.chat-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}

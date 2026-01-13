@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedAssist Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <header class="chat-header">
+      <div class="logo">🩺 MedAssist</div>
+      <div class="status">Online</div>
+    </header>
+
+    <main class="chat-body" id="chatBody">
+      <div class="message assistant">
+        <div class="bubble">
+          Hello! Ask me a medical question.
+        </div>
+      </div>
+    </main>
+
+    <footer class="chat-input">
+      <input type="text" id="userInput" placeholder="Type your medical question..." />
+      <button onclick="sendMessage()">Send</button>
+    </footer>
+
+  </div>
+
+<script>
+  async function sendMessage() {
+    const input = document.getElementById("userInput");
+    const chatBody = document.getElementById("chatBody");
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // User message
+    chatBody.innerHTML += `
+      <div class="message user">
+        <div class="bubble">${message}</div>
+      </div>
+    `;
+    input.value = "";
+
+    // Send to backend
+    const response = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message })
+    });
+
+    const data = await response.json();
+
+    // Assistant message
+    chatBody.innerHTML += `
+      <div class="message assistant">
+        <div class="bubble">${data.reply}</div>
+      </div>
+    `;
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+</script>
+
+</body>
+</html>
